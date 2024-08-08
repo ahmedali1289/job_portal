@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationCancel, NavigationEnd } from '@angular/router';
+import { Router, NavigationCancel, NavigationEnd, RouterOutlet } from '@angular/router';
 import {
   Location,
   LocationStrategy,
@@ -10,16 +10,18 @@ import * as AOS from 'aos';
 declare let $: any;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [
-    Location,
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy,
-    },
-  ],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    providers: [
+        Location,
+        {
+            provide: LocationStrategy,
+            useClass: PathLocationStrategy,
+        },
+    ],
+    standalone: true,
+    imports: [RouterOutlet],
 })
 export class AppComponent {
   title = 'Talent Marketplace';

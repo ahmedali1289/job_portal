@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-jobs-by-location',
     templateUrl: './jobs-by-location.component.html',
-    styleUrls: ['./jobs-by-location.component.scss']
+    styleUrls: ['./jobs-by-location.component.scss'],
+    standalone: true,
+    imports: [CarouselModule, RouterLink]
 })
 export class JobsByLocationComponent {
 

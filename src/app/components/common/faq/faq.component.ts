@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-faq',
     templateUrl: './faq.component.html',
-    styleUrls: ['./faq.component.scss']
+    styleUrls: ['./faq.component.scss'],
+    standalone: true,
+    imports: [NgClass, NgIf]
 })
 export class FaqComponent {
 

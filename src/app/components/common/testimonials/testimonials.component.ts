@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-testimonials',
     templateUrl: './testimonials.component.html',
-    styleUrls: ['./testimonials.component.scss']
+    styleUrls: ['./testimonials.component.scss'],
+    standalone: true,
+    imports: [NgClass, NgIf, CarouselModule]
 })
 export class TestimonialsComponent {
 

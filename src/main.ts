@@ -1,7 +1,20 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { AppModule } from './app/app.module';
+
+import { importProvidersFrom } from '@angular/core';
+import { AppComponent } from './app/app.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { NgxScrollTopModule } from 'ngx-scrolltop';
+import { AppRoutingModule } from './app/app-routing.module';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+bootstrapApplication(AppComponent, {
+    providers: [
+        importProvidersFrom(BrowserModule, CarouselModule, AppRoutingModule, NgxScrollTopModule, NgApexchartsModule),
+        provideAnimations()
+    ]
+})
   .catch(err => console.error(err));

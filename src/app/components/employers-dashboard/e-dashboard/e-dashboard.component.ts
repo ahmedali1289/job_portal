@@ -1,15 +1,6 @@
 import { Component, ViewChild } from "@angular/core";
-import {
-    ChartComponent,
-    ApexAxisChartSeries,
-    ApexChart,
-    ApexXAxis,
-    ApexYAxis,
-    ApexDataLabels,
-    ApexTitleSubtitle,
-    ApexStroke,
-    ApexGrid
-} from "ng-apexcharts";
+import { ChartComponent, ApexAxisChartSeries, ApexChart, ApexXAxis, ApexYAxis, ApexDataLabels, ApexTitleSubtitle, ApexStroke, ApexGrid, NgApexchartsModule } from "ng-apexcharts";
+import { RouterLink } from "@angular/router";
 
 export type ChartOptions = {
     series: ApexAxisChartSeries;
@@ -26,7 +17,9 @@ export type ChartOptions = {
 @Component({
     selector: 'app-e-dashboard',
     templateUrl: './e-dashboard.component.html',
-    styleUrls: ['./e-dashboard.component.scss']
+    styleUrls: ['./e-dashboard.component.scss'],
+    standalone: true,
+    imports: [NgApexchartsModule, RouterLink]
 })
 export class EDashboardComponent {
 

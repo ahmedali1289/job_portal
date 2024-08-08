@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 
 @Component({
     selector: 'app-partners',
     templateUrl: './partners.component.html',
-    styleUrls: ['./partners.component.scss']
+    styleUrls: ['./partners.component.scss'],
+    standalone: true,
+    imports: [CarouselModule]
 })
 export class PartnersComponent {
 

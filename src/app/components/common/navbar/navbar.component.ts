@@ -1,10 +1,13 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.scss']
+    styleUrls: ['./navbar.component.scss'],
+    standalone: true,
+    imports: [NgClass, RouterLink, NgIf, RouterLinkActive]
 })
 export class NavbarComponent {
 
