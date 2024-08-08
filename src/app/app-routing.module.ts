@@ -40,60 +40,58 @@ import { CdMessageComponent } from './components/candidates-dashboard/cd-message
 import { CdChangePasswordComponent } from './components/candidates-dashboard/cd-change-password/cd-change-password.component';
 
 const routes: Routes = [
-    {path: '', component: HomeDemoOneComponent},
-    {path: 'index-2', component: HomeDemoTwoComponent},
-    {path: 'index-3', component: HomeDemoThreeComponent},
-    {path: 'about', component: AboutPageComponent},
-    {path: 'pricing', component: PricingPageComponent},
-    {path: 'jobs-grid', component: JobsGridPageComponent},
-    {path: 'jobs-listing', component: JobsListingPageComponent},
-    {path: 'job-details', component: JobDetailsPageComponent},
-    {path: 'categories', component: CategoriesPageComponent},
-    {path: 'candidates', component: CandidatesPageComponent},
-    {path: 'candidate-details', component: CandidateDetailsPageComponent},
-    {path: 'employers', component: EmployersPageComponent},
-    {path: 'employer-details', component: EmployerDetailsPageComponent},
-    {path: 'faq', component: FaqPageComponent},
-    {path: 'privacy-policy', component: PrivacyPolicyPageComponent},
-    {path: 'terms-conditions', component: TermsConditionsPageComponent},
-    {path: 'blog', component: BlogPageComponent},
-    {path: 'blog-details', component: BlogDetailsPageComponent},
-    {path: 'contact', component: ContactPageComponent},
-    {
-        path: 'dashboard',
-        component: EmployersDashboardComponent,
-        children: [
-            {path: '', component: EDashboardComponent},
-            {path: 'company-profile', component: EdCompanyProfileComponent},
-            {path: 'post-a-new-job', component: EdPostANewJobComponent},
-            {path: 'manage-jobs', component: EdManageJobsComponent},
-            {path: 'all-applicants', component: EdAllApplicantsComponent},
-            {path: 'resumes', component: EdResumesComponent},
-            {path: 'message', component: EdMessageComponent},
-            {path: 'change-password', component: EdChangePasswordComponent},
-        ]
-    },
-    {
-        path: 'candidates-dashboard',
-        component: CandidatesDashboardComponent,
-        children: [
-            {path: '', component: CDashboardComponent},
-            {path: 'my-profile', component: CdProfileComponent},
-            {path: 'resume', component: CdResumeComponent},
-            {path: 'bookmarks', component: CdBookmarksComponent},
-            {path: 'applied-jobs', component: CdAppliedJobsComponent},
-            {path: 'alert-jobs', component: CdAlertJobsComponent},
-            {path: 'message', component: CdMessageComponent},
-            {path: 'change-password', component: CdChangePasswordComponent},
-        ]
-    },
-    // Here add new pages component
-
-    {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
+  { path: '', component: HomeDemoOneComponent },
+  { path: 'index-2', component: HomeDemoTwoComponent },
+  { path: 'index-3', component: HomeDemoThreeComponent },
+  { path: 'about', component: AboutPageComponent },
+  { path: 'pricing', component: PricingPageComponent },
+  { path: 'jobs-grid', component: JobsGridPageComponent },
+  { path: 'jobs-listing', component: JobsListingPageComponent },
+  { path: 'job-details', component: JobDetailsPageComponent },
+  { path: 'categories', component: CategoriesPageComponent },
+  { path: 'candidates', component: CandidatesPageComponent },
+  { path: 'candidate-details', component: CandidateDetailsPageComponent },
+  { path: 'employers', component: EmployersPageComponent },
+  { path: 'employer-details', component: EmployerDetailsPageComponent },
+  { path: 'faq', component: FaqPageComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
+  { path: 'terms-conditions', component: TermsConditionsPageComponent },
+  { path: 'blog', component: BlogPageComponent },
+  { path: 'blog-details', component: BlogDetailsPageComponent },
+  { path: 'contact', component: ContactPageComponent },
+  {
+    path: 'dashboard',
+    component: EmployersDashboardComponent,
+    children: [
+      { path: '', component: EDashboardComponent },
+      { path: 'company-profile', component: EdCompanyProfileComponent },
+      { path: 'post-a-new-job', component: EdPostANewJobComponent },
+      { path: 'manage-jobs', component: EdManageJobsComponent },
+      { path: 'all-applicants', component: EdAllApplicantsComponent },
+      { path: 'resumes', component: EdResumesComponent },
+      { path: 'message', component: EdMessageComponent },
+      { path: 'change-password', component: EdChangePasswordComponent },
+    ],
+  },
+  {
+    path: 'candidates-dashboard',
+    component: CandidatesDashboardComponent,
+    children: [
+      { path: '', component: CDashboardComponent },
+      { path: 'my-profile', component: CdProfileComponent },
+      { path: 'resume', component: CdResumeComponent },
+      { path: 'bookmarks', component: CdBookmarksComponent },
+      { path: 'applied-jobs', component: CdAppliedJobsComponent },
+      { path: 'alert-jobs', component: CdAlertJobsComponent },
+      { path: 'message', component: CdMessageComponent },
+      { path: 'change-password', component: CdChangePasswordComponent },
+    ],
+  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
