@@ -1,0 +1,50 @@
+/* --------------------------------- */
+/* Page Banner Styles */
+/* --------------------------------- */
+.page-banner-area {
+  background-color: #f4f7fb;
+  padding: {
+    top: 40px;
+    bottom: 40px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
+  ul {
+    text-align: end;
+
+    li {
+      margin: {
+        left: 12px;
+        right: 12px;
+      }
+
+      &::before {
+        top: 50%;
+        width: 5px;
+        height: 5px;
+        content: "";
+        right: -15px;
+        margin-top: -0.8px;
+        position: absolute;
+        border-radius: 50%;
+        background: #d2d8e1;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+/* --------------------------------- */
+/* Button Styles */
+/* --------------------------------- */
+.default-btn {
+  background-color: var(--primaryColor);
+  transition: var(--transition);
+  color: var(--headingColor);
+  color: var(--whiteColor);
+  display: inline-block;
+  border-radius: 5px;
+  padding: 15px 50px;
+  box-shadow: unset;
+  border: 0;
+  font: {
+    size: var(--fontSize);
+    weight: 600;
+  }
+
+  &:hover {
+    background-color: var(--secondaryColor);
+    color: var(--whiteColor);
+  }
+
+  &.two {
+    background-color: var(--secondaryColor);
+    color: var(--headingColor);
+
+    &:hover {
+      color: var(--whiteColor);
+      background-color: var(--primaryColor);
+    }
+  }
+}
+/* --------------------------------- */
+/* Back to Top Button Styles */
+/* --------------------------------- */
+.scrolltop-button {
+  right: 30px !important;
+  z-index: 99 !important;
+  width: 45px !important;
+  height: 45px !important;
+  bottom: 30px !important;
+  display: block !important;
+  transition: var(--transition) !important;
+  background-color: var(--whiteColor) !important;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+
+  .symbol-container {
+    color: var(--headingColor) !important;
+    transition: var(--transition);
+    position: relative;
+
+    &::before {
+      left: 0;
+      right: 0;
+      top: 50%;
+      line-height: 1;
+      content: "\ea78";
+      margin-top: -1px;
+      position: absolute;
+      color: var(--headingColor);
+      transform: translateY(-50%);
+      transition: var(--transition);
+      font: {
+        size: 28px;
+        family: remixicon;
+      }
+    }
+  }
+
+  svg {
+    display: none !important;
+  }
+
+  &:hover {
+    background-color: var(--primaryColor) !important;
+
+    .symbol-container {
+      color: var(--whiteColor) !important;
+
+      &::before {
+        color: var(--whiteColor);
+      }
+    }
+  }
+}

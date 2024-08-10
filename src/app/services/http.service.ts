@@ -15,7 +15,6 @@ import {
   tap,
 } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { toggleAlternateLoader } from '../ngrx/data.action';
 import { selectUser } from '../ngrx/data.reducer';
 import { LoaderService } from './loader.service';
 
@@ -117,115 +116,6 @@ export class HttpService {
         return throwError(error.message || 'Server error');
       })
     );
-  }
-  alternateLoaderPost(
-    link: string,
-    data: any,
-    token: boolean,
-    toaster: boolean,
-    loader: boolean = true
-  ) {
-    this.store.dispatch(toggleAlternateLoader({ show: true }));
-    return this.http
-      .post(
-        environment.apiUrl + link,
-        data,
-        token ? this.headerToken : this.header
-      )
-      .pipe(
-        tap((res: any) => {
-          if (loader) {
-            this.store.dispatch(toggleAlternateLoader({ show: false }));
-          }
-          if (toaster) {
-            if (res?.userMessage) {
-              this.toastr.success(res.userMessage);
-            } else if (res?.successMessage) {
-              this.toastr.success(res.successMessage);
-            } else if (res?.errorMessage) {
-              this.toastr.error(res.errorMessage);
-            }
-          }
-        }),
-        catchError((error: HttpErrorResponse) => {
-          this.store.dispatch(toggleAlternateLoader({ show: false }));
-          if (toaster) {
-            this.errorShown(error);
-          }
-          return throwError(error || 'Server error');
-        })
-      );
-  }
-  alternateLoaderGet(
-    url: string,
-    token: boolean,
-    clearCache: boolean,
-    loader: boolean = true,
-    toaster: boolean = false
-  ) {
-    this.store.dispatch(toggleAlternateLoader({ show: true }));
-    const headers = token ? this.headerToken : this.header;
-    return this.http.get(environment.apiUrl + url, headers).pipe(
-      shareReplay({ refCount: true }),
-      tap((res: any) => {
-        if (loader) {
-          this.store.dispatch(toggleAlternateLoader({ show: false }));
-        }
-        // if (res?.message || res?.messsage) {
-        //   this.toastr.success(res?.message ? res?.message : res?.messsage);
-        // }
-      }),
-      catchError((error: HttpErrorResponse) => {
-        if (toaster) {
-          this.errorShown(error);
-        }
-        this.store.dispatch(toggleAlternateLoader({ show: false }));
-        return throwError(error.message || 'Server error');
-      })
-    );
-  }
-  get(url: string, token: boolean, clearCache: boolean) {
-    const headers = token ? this.headerToken : this.header;
-    return this.http.get(environment.apiUrl + url, headers).pipe(
-      shareReplay({ refCount: true }),
-      tap((res: any) => {
-        // if (res?.message || res?.messsage) {
-        //   this.toastr.success(res?.message ? res?.message : res?.messsage);
-        // }
-      }),
-      catchError((error: HttpErrorResponse) => {
-        LoaderService.loader.next(false);
-        return throwError(error || 'Server error');
-      })
-    );
-  }
-  post(link: string, data: any, token: boolean, toaster: boolean) {
-    return this.http
-      .post(
-        environment.apiUrl + link,
-        data,
-        token ? this.headerToken : this.header
-      )
-      .pipe(
-        tap((res: any) => {
-          if (toaster) {
-            if (res?.userMessage) {
-              this.toastr.success(res.userMessage);
-            } else if (res?.successMessage) {
-              this.toastr.success(res.successMessage);
-            } else if (res?.errorMessage) {
-              this.toastr.error(res.errorMessage);
-            }
-          }
-        }),
-        catchError((error: HttpErrorResponse) => {
-          LoaderService.loader.next(false);
-          if (toaster) {
-            this.errorShown(error);
-          }
-          return throwError(error || 'Server error');
-        })
-      );
   }
   errorShown(error) {
     if (error?.error?.length) {

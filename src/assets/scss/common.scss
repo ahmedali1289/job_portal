@@ -1,0 +1,188 @@
+/* --------------------------------- */
+/* Body Styles */
+/* --------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--bodyColor);
+  font: {
+    size: var(--fontSize);
+    family: var(--fontFamily);
+  }
+}
+
+/* --------------------------------- */
+/* Heading Styles (h1 to h6) */
+/* --------------------------------- */
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--headingColor);
+  font: {
+    family: var(--headingFontFamily);
+    weight: 700;
+  }
+}
+
+/* --------------------------------- */
+/* Link Styles */
+/* --------------------------------- */
+a {
+  transition: var(--transition);
+  color: var(--headingColor);
+  text-decoration: none;
+  outline: 0 !important;
+
+  &:hover {
+    color: var(--primaryColor);
+    text-decoration: none;
+  }
+}
+
+/* --------------------------------- */
+/* Focus Styles */
+/* --------------------------------- */
+:focus {
+  outline: 0 !important;
+}
+
+/* --------------------------------- */
+/* Table Styles */
+/* --------------------------------- */
+.d-table {
+  width: 100%;
+  height: 100%;
+
+  &-cell {
+    vertical-align: middle;
+  }
+}
+
+/* --------------------------------- */
+/* Image Styles */
+/* --------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --------------------------------- */
+/* Paragraph Styles */
+/* --------------------------------- */
+p {
+  font-size: var(--fontSize);
+  color: var(--bodyColor);
+  margin-bottom: 15px;
+  line-height: 1.8;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* --------------------------------- */
+/* Background Colors */
+/* --------------------------------- */
+.bg-eaf0f3 {
+  background-color: #eaf0f3;
+}
+
+.bg-f8f8fb {
+  background-color: #f8f8fb;
+}
+
+.bg-fafafa {
+  background-color: #fafafa;
+}
+
+.bg-f5f9fc {
+  background-color: #f5f9fc;
+}
+
+.bg-c29a94 {
+  background-color: #c29a94;
+}
+
+.bg-faf5f2 {
+  background-color: #faf5f2;
+}
+
+.bg-f4f5f7 {
+  background-color: #f4f5f7;
+}
+
+.bg-e9e7e7 {
+  background-color: #e9e7e7;
+}
+/* --------------------------------- */
+/* Section Title Styles */
+/* --------------------------------- */
+.section-title {
+  max-width: 860px;
+  position: relative;
+  margin-bottom: 45px;
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .link-btn {
+    right: 0;
+    top: 50%;
+    position: absolute;
+    padding-right: 21px;
+    transform: translateY(-50%);
+    font: {
+      size: 15.5px;
+      family: var(--headingFontFamily);
+    }
+
+    i {
+      top: 50%;
+      right: -5px;
+      line-height: 1;
+      font-size: 22px;
+      margin-top: 1px;
+      position: absolute;
+      transform: translateY(-50%);
+    }
+
+    &:hover {
+      padding-right: 30px;
+    }
+
+    &.two {
+      &:hover {
+        color: var(--secondaryColor);
+      }
+    }
+  }
+
+  .form-select {
+    right: 0;
+    top: 50%;
+    border: 0;
+    width: auto;
+    box-shadow: unset;
+    position: absolute;
+    padding: 0 35px 0 0;
+    font-size: var(--fontSize);
+    color: var(--headingColor);
+    transform: translateY(-50%);
+    background-position: right 0 center;
+  }
+
+  &.text-start {
+    max-width: 100%;
+    padding-right: 195px;
+  }
+}
