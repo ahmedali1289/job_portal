@@ -1,21 +1,12 @@
 <div
   class="navbar-area"
   [ngClass]="{ 'white-navbar': router.url === '/index-2', sticky: isSticky }"
-  >
+>
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg" [class.active]="classApplied">
-      <a
-        class="navbar-brand"
-        routerLink="/"
-        [ngClass]="{ 'd-none': router.url === '/index-2' }"
-        >
-        <img src="assets/images/logo.webp" alt="logo" />
+      <a class="navbar-brand position-relative" routerLink="/">
+        <img ngSrc="assets/images/logo.webp" fill alt="logo" />
       </a>
-      @if (router.url === '/index-2') {
-        <a class="navbar-brand" routerLink="/">
-          <img src="assets/images/white-logo2.png" alt="white-logo" />
-        </a>
-      }
       <button class="navbar-toggler" type="button" (click)="toggleClass()">
         <span class="burger-menu">
           <span class="top-bar"></span>
@@ -31,7 +22,7 @@
               class="nav-link"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
-              >
+            >
               Home
             </a>
           </li>
@@ -41,7 +32,7 @@
               class="nav-link"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
-              >
+            >
               About us
             </a>
           </li>
@@ -51,7 +42,7 @@
               class="nav-link"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
-              >
+            >
               Jobs
             </a>
           </li>
@@ -61,7 +52,7 @@
               class="nav-link"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
-              >
+            >
               Contact Us
             </a>
           </li>
@@ -86,291 +77,277 @@
 
 <!-- Modal -->
 @if (isOpen) {
-  <div
-    class="modal fade loginRegisterModal"
-    tabindex="-1"
-    aria-hidden="true"
-    >
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body">
-          <ul class="nav nav-tabs d-block border-0">
-            <li
-              class="nav-item d-inline-block"
-              [ngClass]="{ active: currentTab === 'tab1' }"
-              >
-              <button
-                type="button"
-                class="nav-link fw-semibold position-relative shadow-none mb-0 rounded-0"
-                (click)="switchTab($event, 'tab1')"
-                >
-                Login
+<div class="modal fade loginRegisterModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <ul class="nav nav-tabs d-block border-0">
+          <li
+            class="nav-item d-inline-block"
+            [ngClass]="{ active: currentTab === 'tab1' }"
+          >
+            <button
+              type="button"
+              class="nav-link fw-semibold position-relative shadow-none mb-0 rounded-0"
+              (click)="switchTab($event, 'tab1')"
+            >
+              Login
+            </button>
+          </li>
+          <li
+            class="nav-item d-inline-block"
+            [ngClass]="{ active: currentTab === 'tab2' }"
+          >
+            <button
+              type="button"
+              class="nav-link fw-semibold position-relative shadow-none mb-0 rounded-0"
+              (click)="switchTab($event, 'tab2')"
+            >
+              Register
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          @if (currentTab === 'tab1') {
+          <div class="tab-pane fade d-block opacity-100">
+            <div class="info">
+              <p>
+                Username: <span class="fw-semibold">employer</span> or
+                <span class="fw-semibold">candidate</span>
+              </p>
+              <p>Password: <span class="fw-semibold">jove</span></p>
+            </div>
+            <form class="authentication-form">
+              <div class="form-group">
+                <label> Account or Email </label>
+                <input
+                  type="text"
+                  class="form-control shadow-none"
+                  placeholder="Enter account or email"
+                />
+              </div>
+              <div class="form-group">
+                <label> Password </label>
+                <input
+                  type="password"
+                  class="form-control shadow-none"
+                  placeholder="Enter password"
+                />
+              </div>
+              <div class="form-group forgot-password">
+                Forgot your password? <a routerLink="/">Reset password.</a>
+              </div>
+              <button type="submit" class="default-btn d-block w-100">
+                Login Now
               </button>
-            </li>
-            <li
-              class="nav-item d-inline-block"
-              [ngClass]="{ active: currentTab === 'tab2' }"
+              <div class="login-with-socials text-center">
+                <span class="d-block fw-medium"> Or Continue with </span>
+                <a href="#" target="_blank" class="facebook d-inline-block">
+                  <i class="ri-facebook-fill"></i>
+                </a>
+                <a href="#" target="_blank" class="google d-inline-block">
+                  <i class="ri-google-fill"></i>
+                </a>
+                <a href="#" target="_blank" class="linkedin d-inline-block">
+                  <i class="ri-linkedin-fill"></i>
+                </a>
+              </div>
+            </form>
+          </div>
+          } @if (currentTab === 'tab2') {
+          <div class="tab-pane fade d-block opacity-100">
+            <ul class="nav nav-tabs d-block border-0">
+              <li
+                class="nav-item d-inline-block"
+                [ngClass]="{ active: currentInnerTab === 'innerTab1' }"
               >
-              <button
-                type="button"
-                class="nav-link fw-semibold position-relative shadow-none mb-0 rounded-0"
-                (click)="switchTab($event, 'tab2')"
+                <button
+                  type="button"
+                  class="nav-link fw-semibold shadow-none mb-0"
+                  (click)="switchInnerTab($event, 'innerTab1')"
                 >
-                Register
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content">
-            @if (currentTab === 'tab1') {
-              <div
-                class="tab-pane fade d-block opacity-100"
+                  Candidate
+                </button>
+              </li>
+              <li
+                class="nav-item d-inline-block"
+                [ngClass]="{ active: currentInnerTab === 'innerTab2' }"
+              >
+                <button
+                  type="button"
+                  class="nav-link fw-semibold shadow-none mb-0"
+                  (click)="switchInnerTab($event, 'innerTab2')"
                 >
-                <div class="info">
-                  <p>
-                    Username: <span class="fw-semibold">employer</span> or
-                    <span class="fw-semibold">candidate</span>
-                  </p>
-                  <p>Password: <span class="fw-semibold">jove</span></p>
-                </div>
+                  Employer
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content">
+              @if (currentInnerTab === 'innerTab1') {
+              <div class="tab-pane fade d-block opacity-100">
                 <form class="authentication-form">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> First Name </label>
+                        <input
+                          type="text"
+                          class="form-control shadow-none"
+                          placeholder="Enter name"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> Last Name </label>
+                        <input
+                          type="text"
+                          class="form-control shadow-none"
+                          placeholder="Enter name"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> Username </label>
+                        <input
+                          type="text"
+                          class="form-control shadow-none"
+                          placeholder="Enter username"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> Email </label>
+                        <input
+                          type="email"
+                          class="form-control shadow-none"
+                          placeholder="Enter email"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   <div class="form-group">
-                    <label> Account or Email </label>
+                    <label> Phone number </label>
                     <input
                       type="text"
                       class="form-control shadow-none"
-                      placeholder="Enter account or email"
-                      />
+                      placeholder="Enter phone number"
+                    />
                   </div>
                   <div class="form-group">
                     <label> Password </label>
                     <input
-                      type="password"
+                      type="text"
                       class="form-control shadow-none"
                       placeholder="Enter password"
-                      />
+                    />
                   </div>
-                  <div class="form-group forgot-password">
-                    Forgot your password? <a routerLink="/">Reset password.</a>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input shadow-none"
+                      type="checkbox"
+                      id="termsPrivacyPolicy"
+                    />
+                    <label class="form-check-label" for="termsPrivacyPolicy">
+                      Accept the <a routerLink="/">Terms</a> and
+                      <a routerLink="/">Privacy Policy</a>
+                    </label>
                   </div>
                   <button type="submit" class="default-btn d-block w-100">
-                    Login Now
+                    Register Now
                   </button>
-                  <div class="login-with-socials text-center">
-                    <span class="d-block fw-medium"> Or Continue with </span>
-                    <a href="#" target="_blank" class="facebook d-inline-block">
-                      <i class="ri-facebook-fill"></i>
-                    </a>
-                    <a href="#" target="_blank" class="google d-inline-block">
-                      <i class="ri-google-fill"></i>
-                    </a>
-                    <a href="#" target="_blank" class="linkedin d-inline-block">
-                      <i class="ri-linkedin-fill"></i>
-                    </a>
-                  </div>
                 </form>
               </div>
-            }
-            @if (currentTab === 'tab2') {
-              <div
-                class="tab-pane fade d-block opacity-100"
-                >
-                <ul class="nav nav-tabs d-block border-0">
-                  <li
-                    class="nav-item d-inline-block"
-                    [ngClass]="{ active: currentInnerTab === 'innerTab1' }"
-                    >
-                    <button
-                      type="button"
-                      class="nav-link fw-semibold shadow-none mb-0"
-                      (click)="switchInnerTab($event, 'innerTab1')"
-                      >
-                      Candidate
-                    </button>
-                  </li>
-                  <li
-                    class="nav-item d-inline-block"
-                    [ngClass]="{ active: currentInnerTab === 'innerTab2' }"
-                    >
-                    <button
-                      type="button"
-                      class="nav-link fw-semibold shadow-none mb-0"
-                      (click)="switchInnerTab($event, 'innerTab2')"
-                      >
-                      Employer
-                    </button>
-                  </li>
-                </ul>
-                <div class="tab-content">
-                  @if (currentInnerTab === 'innerTab1') {
-                    <div
-                      class="tab-pane fade d-block opacity-100"
-                      >
-                      <form class="authentication-form">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> First Name </label>
-                              <input
-                                type="text"
-                                class="form-control shadow-none"
-                                placeholder="Enter name"
-                                />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> Last Name </label>
-                              <input
-                                type="text"
-                                class="form-control shadow-none"
-                                placeholder="Enter name"
-                                />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> Username </label>
-                              <input
-                                type="text"
-                                class="form-control shadow-none"
-                                placeholder="Enter username"
-                                />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> Email </label>
-                              <input
-                                type="email"
-                                class="form-control shadow-none"
-                                placeholder="Enter email"
-                                />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label> Phone number </label>
-                          <input
-                            type="text"
-                            class="form-control shadow-none"
-                            placeholder="Enter phone number"
-                            />
-                        </div>
-                        <div class="form-group">
-                          <label> Password </label>
-                          <input
-                            type="text"
-                            class="form-control shadow-none"
-                            placeholder="Enter password"
-                            />
-                        </div>
-                        <div class="form-check">
-                          <input
-                            class="form-check-input shadow-none"
-                            type="checkbox"
-                            id="termsPrivacyPolicy"
-                            />
-                          <label class="form-check-label" for="termsPrivacyPolicy">
-                            Accept the <a routerLink="/">Terms</a> and
-                            <a routerLink="/">Privacy Policy</a>
-                          </label>
-                        </div>
-                        <button type="submit" class="default-btn d-block w-100">
-                          Register Now
-                        </button>
-                      </form>
+              } @if (currentInnerTab === 'innerTab2') {
+              <div class="tab-pane fade d-block opacity-100">
+                <form class="authentication-form">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> First Name </label>
+                        <input
+                          type="text"
+                          class="form-control shadow-none"
+                          placeholder="Enter name"
+                        />
+                      </div>
                     </div>
-                  }
-                  @if (currentInnerTab === 'innerTab2') {
-                    <div
-                      class="tab-pane fade d-block opacity-100"
-                      >
-                      <form class="authentication-form">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> First Name </label>
-                              <input
-                                type="text"
-                                class="form-control shadow-none"
-                                placeholder="Enter name"
-                                />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> Last Name </label>
-                              <input
-                                type="text"
-                                class="form-control shadow-none"
-                                placeholder="Enter name"
-                                />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> Username </label>
-                              <input
-                                type="text"
-                                class="form-control shadow-none"
-                                placeholder="Enter username"
-                                />
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label> Email </label>
-                              <input
-                                type="email"
-                                class="form-control shadow-none"
-                                placeholder="Enter email"
-                                />
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label> Phone number </label>
-                          <input
-                            type="text"
-                            class="form-control shadow-none"
-                            placeholder="Enter phone number"
-                            />
-                        </div>
-                        <div class="form-group">
-                          <label> Password </label>
-                          <input
-                            type="text"
-                            class="form-control shadow-none"
-                            placeholder="Enter password"
-                            />
-                        </div>
-                        <div class="form-check">
-                          <input
-                            class="form-check-input shadow-none"
-                            type="checkbox"
-                            id="termsPrivacyPolicy"
-                            />
-                          <label class="form-check-label" for="termsPrivacyPolicy">
-                            Accept the <a routerLink="/">Terms</a> and
-                            <a routerLink="/">Privacy Policy</a>
-                          </label>
-                        </div>
-                        <button type="submit" class="default-btn d-block w-100">
-                          Register Now
-                        </button>
-                      </form>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> Last Name </label>
+                        <input
+                          type="text"
+                          class="form-control shadow-none"
+                          placeholder="Enter name"
+                        />
+                      </div>
                     </div>
-                  }
-                </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> Username </label>
+                        <input
+                          type="text"
+                          class="form-control shadow-none"
+                          placeholder="Enter username"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label> Email </label>
+                        <input
+                          type="email"
+                          class="form-control shadow-none"
+                          placeholder="Enter email"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label> Phone number </label>
+                    <input
+                      type="text"
+                      class="form-control shadow-none"
+                      placeholder="Enter phone number"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label> Password </label>
+                    <input
+                      type="text"
+                      class="form-control shadow-none"
+                      placeholder="Enter password"
+                    />
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input shadow-none"
+                      type="checkbox"
+                      id="termsPrivacyPolicy"
+                    />
+                    <label class="form-check-label" for="termsPrivacyPolicy">
+                      Accept the <a routerLink="/">Terms</a> and
+                      <a routerLink="/">Privacy Policy</a>
+                    </label>
+                  </div>
+                  <button type="submit" class="default-btn d-block w-100">
+                    Register Now
+                  </button>
+                </form>
               </div>
-            }
+              }
+            </div>
           </div>
-          <button (click)="closePopup()" type="button" class="close-btn">
-            <i class="ri-close-fill"></i>
-          </button>
+          }
         </div>
+        <button (click)="closePopup()" type="button" class="close-btn">
+          <i class="ri-close-fill"></i>
+        </button>
       </div>
     </div>
-    <div class="modal-backdrop fade show"></div>
   </div>
+  <div class="modal-backdrop fade show"></div>
+</div>
 }
