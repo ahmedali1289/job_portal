@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
     standalone: true,
-    imports: [RouterLink, NgClass, NgIf]
+    imports: [RouterLink, NgClass]
 })
 export class CategoriesComponent {
 
