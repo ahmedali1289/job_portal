@@ -12,6 +12,7 @@ import { PricingPageComponent } from 'src/app/components/pages/pricing-page/pric
 import { PrivacyPolicyPageComponent } from 'src/app/components/pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsConditionsPageComponent } from 'src/app/components/pages/terms-conditions-page/terms-conditions-page.component';
 import { WebComponent } from './web.component';
+import { JobDetailsPageComponent } from 'src/app/components/pages/job-details-page/job-details-page.component';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
       { path: 'about-us', component: AboutPageComponent },
       { path: 'pricing', component: PricingPageComponent },
       { path: 'jobs', component: JobsListingPageComponent },
+      { path: 'job-details', component: JobDetailsPageComponent },
       { path: 'faq', component: FaqPageComponent },
       { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
       { path: 'terms-conditions', component: TermsConditionsPageComponent },
@@ -30,32 +32,18 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'dashboard',
-    component: EmployersDashboardComponent,
-    children: [
-      // { path: '', component: EDashboardComponent },
-      // { path: 'company-profile', component: EdCompanyProfileComponent },
-      // { path: 'post-a-new-job', component: EdPostANewJobComponent },
-      // { path: 'manage-jobs', component: EdManageJobsComponent },
-      // { path: 'all-applicants', component: EdAllApplicantsComponent },
-      // { path: 'resumes', component: EdResumesComponent },
-      // { path: 'message', component: EdMessageComponent },
-      // { path: 'change-password', component: EdChangePasswordComponent },
-    ],
+    path: 'employee-dashboard',
+    loadChildren: () =>
+      import(
+        '../../components/employers-dashboard/employers-dashboard.routes'
+      ).then((m) => m.routes),
   },
   {
     path: 'candidates-dashboard',
-    component: CandidatesDashboardComponent,
-    children: [
-      // { path: '', component: CDashboardComponent },
-      // { path: 'my-profile', component: CdProfileComponent },
-      // { path: 'resume', component: CdResumeComponent },
-      // { path: 'bookmarks', component: CdBookmarksComponent },
-      // { path: 'applied-jobs', component: CdAppliedJobsComponent },
-      // { path: 'alert-jobs', component: CdAlertJobsComponent },
-      // { path: 'message', component: CdMessageComponent },
-      // { path: 'change-password', component: CdChangePasswordComponent },
-    ],
+    loadChildren: () =>
+      import(
+        '../../components/candidates-dashboard/candidate-dashboard.routes'
+      ).then((m) => m.routes),
   },
   { path: '**', component: NotFoundComponent },
 ];
