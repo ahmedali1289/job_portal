@@ -12,23 +12,74 @@ import { PricingPageComponent } from 'src/app/components/pages/pricing-page/pric
 import { PrivacyPolicyPageComponent } from 'src/app/components/pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsConditionsPageComponent } from 'src/app/components/pages/terms-conditions-page/terms-conditions-page.component';
 import { WebComponent } from './web.component';
-import { JobDetailsPageComponent } from 'src/app/components/pages/job-details-page/job-details-page.component';
-
 export const routes: Routes = [
   {
     path: '',
     component: WebComponent,
     children: [
-      { path: '', component: HomeDemoOneComponent },
-      { path: 'about-us', component: AboutPageComponent },
-      { path: 'pricing', component: PricingPageComponent },
-      { path: 'jobs', component: JobsListingPageComponent },
-      { path: 'job-details', component: JobDetailsPageComponent },
-      { path: 'faq', component: FaqPageComponent },
-      { path: 'privacy-policy', component: PrivacyPolicyPageComponent },
-      { path: 'terms-conditions', component: TermsConditionsPageComponent },
-      { path: 'blog', component: BlogPageComponent },
-      { path: 'contact', component: ContactPageComponent },
+      {
+        path: '',
+        loadChildren: () =>
+          import('../../components/pages/home-demo-one/home.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'about-us',
+        loadChildren: () =>
+          import('../../components/pages/about-page/about.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'pricing',
+        loadChildren: () =>
+          import('../../components/pages/pricing-page/pricing.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'jobs',
+        loadChildren: () =>
+          import('../../components/pages/jobs-listing-page/jobs.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'faq',
+        loadChildren: () =>
+          import('../../components/pages/faq-page/faq.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'privacy-policy',
+        loadChildren: () =>
+          import(
+            '../../components/pages/privacy-policy-page/privacy-policy.routes'
+          ).then((m) => m.routes),
+      },
+      {
+        path: 'terms-conditions',
+        loadChildren: () =>
+          import(
+            '../../components/pages/terms-conditions-page/terms-conditions.routes'
+          ).then((m) => m.routes),
+      },
+      {
+        path: 'blog',
+        loadChildren: () =>
+          import('../../components/pages/blog-page/blog.routes').then(
+            (m) => m.routes
+          ),
+      },
+      {
+        path: 'contact-us',
+        loadChildren: () =>
+          import('../../components/pages/contact-page/contact-us.routes').then(
+            (m) => m.routes
+          ),
+      },
     ],
   },
   {
