@@ -12,6 +12,8 @@ import { PricingPageComponent } from 'src/app/components/pages/pricing-page/pric
 import { PrivacyPolicyPageComponent } from 'src/app/components/pages/privacy-policy-page/privacy-policy-page.component';
 import { TermsConditionsPageComponent } from 'src/app/components/pages/terms-conditions-page/terms-conditions-page.component';
 import { WebComponent } from './web.component';
+import { HomeDemoTwoComponent } from 'src/app/components/pages/home-demo-two/home-demo-two.component';
+import { HomeDemoThreeComponent } from 'src/app/components/pages/home-demo-three/home-demo-three.component';
 export const routes: Routes = [
   {
     path: '',
@@ -20,7 +22,7 @@ export const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('../../components/pages/home-demo-one/home.routes').then(
+          import('../../components/pages/home-demo-three/home.routes').then(
             (m) => m.routes
           ),
       },

@@ -1,5 +1,5 @@
 .banner-area {
-  padding-top: 100px;
+  padding-top: 70px;
   background-color: #1f3063;
   background: {
     position: center center;
@@ -14,20 +14,15 @@
   }
 }
 .banner-content {
-  padding-right: 25px;
-  top: -45px;
-
   h1 {
+    line-height: 1;
     color: var(--whiteColor);
-    font-size: 71px;
-    margin: {
-      bottom: 45px;
-      top: -11px;
-    }
+    font-size: 60px;
+  }
+  h6 {
+    color: var(--whiteColor);
   }
   .info {
-    margin-bottom: 17px;
-
     span {
       color: var(--whiteColor);
     }
@@ -135,19 +130,8 @@
     }
   }
   .banner-content {
-    margin-bottom: 25px;
-    padding-right: 0;
-    top: 0;
-
     h1 {
       font-size: 32px;
-      margin: {
-        bottom: 20px;
-        top: -4px;
-      }
-    }
-    .info {
-      margin-bottom: 17px;
     }
     .banner-form {
       padding: 0;
@@ -233,18 +217,8 @@
     }
   }
   .banner-content {
-    padding-right: 0;
-    top: 0;
-
     h1 {
       font-size: 47px;
-      margin: {
-        bottom: 25px;
-        top: -7px;
-      }
-    }
-    .info {
-      margin-bottom: 17px;
     }
     .banner-form {
       padding-left: 10px;
@@ -310,18 +284,8 @@
     }
   }
   .banner-content {
-    padding-right: 0;
-    top: 0;
-
     h1 {
-      font-size: 65px;
-      margin: {
-        bottom: 30px;
-        top: -10px;
-      }
-    }
-    .info {
-      margin-bottom: 15px;
+      font-size: 60px;
     }
     .banner-form {
       padding-left: 25px;
@@ -348,18 +312,8 @@
     }
   }
   .banner-content {
-    padding-right: 0;
-    top: -45px;
-
     h1 {
-      font-size: 63px;
-      margin: {
-        bottom: 30px;
-        top: -12px;
-      }
-    }
-    .info {
-      margin-bottom: 15px;
+      font-size: 55px;
     }
     .banner-form {
       padding-left: 25px;
@@ -399,11 +353,8 @@
     }
   }
   .banner-content {
-    padding-right: 50px;
-
     h1 {
       font-size: 80px;
-      margin-top: -13px;
     }
   }
   .banner-image {
