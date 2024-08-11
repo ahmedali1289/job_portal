@@ -20,6 +20,7 @@ import { HttpService } from './services/http.service';
 import { LoaderService } from './services/loader.service';
 import { userReducer } from './ngrx/data.reducer';
 import { ResizeService } from './services/resize.service';
+import { IMAGE_CONFIG } from '@angular/common';
 const scrollConfig: InMemoryScrollingOptions = {
   scrollPositionRestoration: 'top',
 };
@@ -32,6 +33,12 @@ export const appConfig: ApplicationConfig = {
       inMemoryScrollingFeature,
       withPreloading(QuicklinkStrategy)
     ),
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        placeholderResolution: 40,
+      },
+    },
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
     ResizeService,

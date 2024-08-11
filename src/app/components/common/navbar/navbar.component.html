@@ -2,7 +2,12 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg" [class.active]="classApplied">
       <a class="navbar-brand position-relative" routerLink="/">
-        <img ngSrc="assets/images/logo.webp" fill alt="logo" />
+        <img
+          placeholder="assets/images/placeholder.webp"
+          ngSrc="assets/images/logo.webp"
+          fill
+          alt="logo"
+        />
       </a>
       <button class="navbar-toggler" type="button" (click)="toggleClass()">
         <span class="burger-menu">

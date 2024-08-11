@@ -1,11 +1,27 @@
 @font-face {
   font-family: "pLight";
-  src: url("../fonts/Poppins-Light.woff2") format("woff2");
+  src: url("../fonts/pLight.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "pSemi";
-  src: url("../fonts/Poppins-SemiBold.woff2") format("woff2");
+  src: url("../fonts/pSemi.woff2") format("woff2");
   font-display: swap;
+}
+@font-face {
+  font-family: "pBold";
+  src: url("../fonts/pBold.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "pBlack";
+  src: url("../fonts/pBlack.woff2") format("woff2");
+  font-display: swap;
+}
+.pBold {
+  font-family: pBold;
+}
+.pBlack {
+  font-family: pBlack;
 }

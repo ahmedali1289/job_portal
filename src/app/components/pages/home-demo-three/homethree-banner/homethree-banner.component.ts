@@ -1,9 +1,9 @@
-import { AsyncPipe, NgClass } from '@angular/common';
+import { AsyncPipe, NgClass, NgOptimizedImage } from '@angular/common';
 import { Component } from '@angular/core';
 import { ResizeService } from 'src/app/services/resize.service';
 
 @Component({
-  imports: [NgClass, AsyncPipe],
+  imports: [NgClass, AsyncPipe, NgOptimizedImage],
   selector: 'app-homethree-banner',
   templateUrl: './homethree-banner.component.html',
   styleUrls: ['./homethree-banner.component.scss'],
