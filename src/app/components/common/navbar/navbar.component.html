@@ -114,7 +114,7 @@
           @if (currentTab === 'tab1') {
           <div class="tab-pane fade d-block opacity-100">
             <form
-              [formGroup]="authenticationForm"
+              [formGroup]="loginForm"
               (ngSubmit)="onSubmit()"
               class="authentication-form"
             >
@@ -126,10 +126,12 @@
                   placeholder="Enter account or email"
                   formControlName="email"
                 />
-                @if(email?.invalid && (email?.touched || email?.dirty)){
-                @if(email?.errors?.['required']){
+                @if(loginForm.get('email')?.invalid &&
+                (loginForm.get('email')?.touched ||
+                loginForm.get('email')?.dirty)){
+                @if(loginForm.get('email')?.errors?.['required']){
                 <small class="text-danger">Email is required.</small>
-                } @if(email?.errors?.['email']){
+                } @if(loginForm.get('email')?.errors?.['email']){
                 <small class="text-danger"
                   >Please enter a valid email address.</small
                 >
@@ -144,10 +146,12 @@
                   placeholder="Enter password"
                   formControlName="password"
                 />
-                @if(password?.invalid && (password?.touched ||
-                password?.dirty)){ @if(password?.errors?.['required']){
+                @if(loginForm.get('password')?.invalid &&
+                (loginForm.get('password')?.touched ||
+                loginForm.get('password')?.dirty)){
+                @if(loginForm.get('password')?.errors?.['required']){
                 <small class="text-danger">Password is required.</small>
-                } @if(password?.errors?.['minlength']){
+                } @if(loginForm.get('password')?.errors?.['minlength']){
                 <small class="text-danger">
                   Password must be at least 6 characters long.
                 </small>
@@ -161,7 +165,7 @@
               <button
                 type="submit"
                 class="default-btn d-block w-100"
-                [disabled]="authenticationForm.invalid"
+                [disabled]="loginForm.invalid"
               >
                 Login Now
               </button>
@@ -184,186 +188,140 @@
             <ul class="nav nav-tabs d-block border-0">
               <li
                 class="nav-item d-inline-block"
-                [ngClass]="{ active: currentInnerTab === 'innerTab1' }"
+                [ngClass]="{ active: currentInnerTab === 'Candidate' }"
               >
                 <button
                   type="button"
                   class="nav-link fw-semibold shadow-none mb-0"
-                  (click)="switchInnerTab($event, 'innerTab1')"
+                  (click)="switchInnerTab($event, 'Candidate')"
                 >
                   Candidate
                 </button>
               </li>
               <li
                 class="nav-item d-inline-block"
-                [ngClass]="{ active: currentInnerTab === 'innerTab2' }"
+                [ngClass]="{ active: currentInnerTab === 'Employer' }"
               >
                 <button
                   type="button"
                   class="nav-link fw-semibold shadow-none mb-0"
-                  (click)="switchInnerTab($event, 'innerTab2')"
+                  (click)="switchInnerTab($event, 'Employer')"
                 >
                   Employer
                 </button>
               </li>
             </ul>
-            <div class="tab-content">
-              @if (currentInnerTab === 'innerTab1') {
-              <div class="tab-pane fade d-block opacity-100">
-                <form class="authentication-form">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> First Name </label>
-                        <input
-                          type="text"
-                          class="form-control shadow-none"
-                          placeholder="Enter name"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> Last Name </label>
-                        <input
-                          type="text"
-                          class="form-control shadow-none"
-                          placeholder="Enter name"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> Username </label>
-                        <input
-                          type="text"
-                          class="form-control shadow-none"
-                          placeholder="Enter username"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> Email </label>
-                        <input
-                          type="email"
-                          class="form-control shadow-none"
-                          placeholder="Enter email"
-                        />
-                      </div>
-                    </div>
-                  </div>
+            <form
+              class="authentication-form"
+              [formGroup]="signUpForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="row">
+                <div class="col-sm-6">
                   <div class="form-group">
-                    <label> Phone number </label>
+                    <label> First Name </label>
                     <input
                       type="text"
                       class="form-control shadow-none"
-                      placeholder="Enter phone number"
+                      placeholder="Enter name"
+                      formControlName="fName"
                     />
+                    @if(signUpForm.get('fName')?.invalid &&
+                    (signUpForm.get('fName')?.touched ||
+                    signUpForm.get('fName')?.dirty)){
+                    @if(signUpForm.get('fName')?.errors?.['required']){
+                    <small class="text-danger">First Name is required.</small>
+                    } }
                   </div>
+                </div>
+                <div class="col-sm-6">
                   <div class="form-group">
-                    <label> Password </label>
+                    <label> Last Name </label>
                     <input
                       type="text"
                       class="form-control shadow-none"
-                      placeholder="Enter password"
+                      placeholder="Enter name"
+                      formControlName="lName"
                     />
+                    @if(signUpForm.get('lName')?.invalid &&
+                    (signUpForm.get('lName')?.touched ||
+                    signUpForm.get('lName')?.dirty)){
+                    @if(signUpForm.get('lName')?.errors?.['required']){
+                    <small class="text-danger">Last Name is required.</small>
+                    } }
                   </div>
-                  <div class="form-check">
+                </div>
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label> Email </label>
                     <input
-                      class="form-check-input shadow-none"
-                      type="checkbox"
-                      id="termsPrivacyPolicy"
+                      type="email"
+                      class="form-control shadow-none"
+                      placeholder="Enter email"
+                      formControlName="email"
                     />
-                    <label class="form-check-label" for="termsPrivacyPolicy">
-                      Accept the <a routerLink="/">Terms</a> and
-                      <a routerLink="/">Privacy Policy</a>
-                    </label>
+                    @if(signUpForm.get('email')?.invalid &&
+                    (signUpForm.get('email')?.touched ||
+                    signUpForm.get('email')?.dirty)){
+                    @if(signUpForm.get('email')?.errors?.['required']){
+                    <small class="text-danger">Email is required.</small>
+                    } @if(signUpForm.get('email')?.errors?.['email']){
+                    <small class="text-danger"
+                      >Please enter a valid email address.</small
+                    >
+                    } }
                   </div>
-                  <button type="submit" class="default-btn d-block w-100">
-                    Register Now
-                  </button>
-                </form>
+                </div>
               </div>
-              } @if (currentInnerTab === 'innerTab2') {
-              <div class="tab-pane fade d-block opacity-100">
-                <form class="authentication-form">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> First Name </label>
-                        <input
-                          type="text"
-                          class="form-control shadow-none"
-                          placeholder="Enter name"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> Last Name </label>
-                        <input
-                          type="text"
-                          class="form-control shadow-none"
-                          placeholder="Enter name"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> Username </label>
-                        <input
-                          type="text"
-                          class="form-control shadow-none"
-                          placeholder="Enter username"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label> Email </label>
-                        <input
-                          type="email"
-                          class="form-control shadow-none"
-                          placeholder="Enter email"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label> Phone number </label>
-                    <input
-                      type="text"
-                      class="form-control shadow-none"
-                      placeholder="Enter phone number"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label> Password </label>
-                    <input
-                      type="text"
-                      class="form-control shadow-none"
-                      placeholder="Enter password"
-                    />
-                  </div>
-                  <div class="form-check">
-                    <input
-                      class="form-check-input shadow-none"
-                      type="checkbox"
-                      id="termsPrivacyPolicy"
-                    />
-                    <label class="form-check-label" for="termsPrivacyPolicy">
-                      Accept the <a routerLink="/">Terms</a> and
-                      <a routerLink="/">Privacy Policy</a>
-                    </label>
-                  </div>
-                  <button type="submit" class="default-btn d-block w-100">
-                    Register Now
-                  </button>
-                </form>
+              <div class="form-group">
+                <label> Phone number </label>
+                <input
+                  type="text"
+                  class="form-control shadow-none"
+                  placeholder="Enter phone number"
+                  formControlName="phoneNumber"
+                />
+                @if(signUpForm.get('phoneNumber')?.invalid &&
+                (signUpForm.get('phoneNumber')?.touched ||
+                signUpForm.get('phoneNumber')?.dirty)){
+                @if(signUpForm.get('phoneNumber')?.errors?.['required']){
+                <small class="text-danger">phoneNumber is required.</small>
+                }}
               </div>
-              }
-            </div>
+              <div class="form-group">
+                <label> Password </label>
+                <input
+                  type="text"
+                  class="form-control shadow-none"
+                  placeholder="Enter password"
+                  formControlName="password"
+                />
+                @if(signUpForm.get('password')?.invalid &&
+                (signUpForm.get('password')?.touched ||
+                signUpForm.get('password')?.dirty)){
+                @if(signUpForm.get('password')?.errors?.['required']){
+                <small class="text-danger">Password is required.</small>
+                } @if(signUpForm.get('password')?.errors?.['minlength']){
+                <small class="text-danger">
+                  Password must be at least 6 characters long.
+                </small>
+                } }
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input shadow-none"
+                  type="checkbox"
+                  id="termsPrivacyPolicy"
+                />
+                <label class="form-check-label" for="termsPrivacyPolicy">
+                  Accept the <a routerLink="/">Terms</a> and
+                  <a routerLink="/">Privacy Policy</a>
+                </label>
+              </div>
+              <button type="submit" class="default-btn d-block w-100">
+                Register Now
+              </button>
+            </form>
           </div>
           }
         </div>

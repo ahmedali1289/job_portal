@@ -1,9 +1,0 @@
-@mixin font-config($size, $family) {
-  font-size: $size;
-  font-family: $family;
-}
-
-@mixin padding-config($top, $bottom) {
-  padding-top: $top;
-  padding-bottom: $bottom;
-}

@@ -26,9 +26,9 @@ import { addUserData } from 'src/app/ngrx/data.action';
   ],
 })
 export class NavbarComponent {
-  // Navbar Sticky
   isSticky: boolean = false;
-  authenticationForm: FormGroup;
+  loginForm: FormGroup;
+  signUpForm: FormGroup;
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
     const scrollPosition =
@@ -70,10 +70,11 @@ export class NavbarComponent {
   }
 
   // Tabs 2
-  currentInnerTab = 'innerTab1';
+  currentInnerTab = 'Candidate';
   switchInnerTab(event: MouseEvent, tab: string) {
     event.preventDefault();
     this.currentInnerTab = tab;
+    this.signUpForm.get('role').setValue(tab);
   }
 
   // Modal Popup
@@ -83,21 +84,27 @@ export class NavbarComponent {
     this.isOpen = true;
   }
   createForm(): void {
-    this.authenticationForm = this.fb.group({
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+    this.signUpForm = this.fb.group({
+      role: [this.currentInnerTab, [Validators.required]],
+      fName: ['', [Validators.required]],
+      lName: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      phoneNumber: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit(): void {
-    this.store.dispatch(addUserData({ user: this.authenticationForm.value }));
+    if (this.currentTab == 'tab1') {
+      console.log('login');
+    } else {
+      console.log('signup form');
+    }
+    this.store.dispatch(addUserData({ user: this.loginForm.value }));
     this.isOpen = false;
-  }
-  get email() {
-    return this.authenticationForm.get('email');
-  }
-
-  get password() {
-    return this.authenticationForm.get('password');
   }
 }
